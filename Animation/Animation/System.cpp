@@ -302,7 +302,7 @@ bool System::Initialize()
 	D3DXMatrixOrthoLH(&orthoMatrix, (float)screenWidth, (float)screenHeight, screenNear, screenDepth);
 
 	//create new game
-	game = new Game(GetDevice(), hwnd,hinstance);
+	game = new Game(GetDevice(), hwnd,hinstance, worldMatrix, GetDeviceContext());
 	game->SetWorldMatrix(worldMatrix);
 	//BeginScene(1.0f, 1.0f, 1.0f, 1.0f);
 	return true;

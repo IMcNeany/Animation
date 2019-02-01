@@ -1,701 +1,242 @@
-﻿  Mesh.cpp
-  Note: including file: e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\Mesh.h
-  Note: including file:  e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\VertexBuffer.h
-  Note: including file:   E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\d3d11.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpc.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\windows.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\winapifamily.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\winpackagefamily.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\sdkddkver.h
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\excpt.h
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vcruntime.h
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\sal.h
-  Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\concurrencysal.h
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vadefs.h
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\stdarg.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\windef.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\minwindef.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\specstrings.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\specstrings_strict.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\specstrings_undef.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\driverspecs.h
-  Note: including file:          c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\sdv_driverspecs.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnt.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\ctype.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wctype.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\kernelspecs.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\basetsd.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\guiddef.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\string.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_memory.h
-  Note: including file:            C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_memcpy_s.h
-  Note: including file:             C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\errno.h
-  Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vcruntime_string.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wstring.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\apiset.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\ktmtypes.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winbase.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\apisetcconv.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\minwinbase.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\processenv.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\fileapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\debugapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\utilapiset.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\handleapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\errhandlingapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\fibersapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\namedpipeapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\profileapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\heapapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ioapiset.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\synchapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\interlockedapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\processthreadsapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\sysinfoapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\memoryapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\enclaveapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\threadpoollegacyapiset.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\threadpoolapiset.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\jobapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\jobapi2.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wow64apiset.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\libloaderapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\securitybaseapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\namespaceapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\systemtopologyapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\processtopologyapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\securityappcontainer.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\realtimeapiset.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\winerror.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\timezoneapi.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wingdi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winuser.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\tvout.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnls.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\datetimeapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\stringapiset.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnls.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wincon.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wincontypes.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\consoleapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\consoleapi2.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\consoleapi3.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winver.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\verrsrc.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winreg.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\reason.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnetwk.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\wnnc.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\cderr.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\dde.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ddeml.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\dlgs.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\lzexpand.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsystem.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mciapi.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmiscapi.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmiscapi2.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\playsoundapi.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmeapi.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\timeapi.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\joystickapi.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\nb30.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpc.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcdce.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcdcep.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\rpcnsi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcnterr.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcasync.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\shellapi.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winperf.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winsock.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\inaddr.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wincrypt.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\bcrypt.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ncrypt.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\dpapi.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winefs.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winscard.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\wtypes.h
-  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\rpcndr.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\rpcnsip.h
-  Note: including file:         E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\rpcsal.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\wtypesbase.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\guiddef.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winioctl.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:       c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winsmcrd.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winspool.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\prsht.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ole2.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\objbase.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\combaseapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\stdlib.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_malloc.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_search.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\stddef.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wstdlib.h
-  Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\limits.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\unknwnbase.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\objidlbase.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\guiddef.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\cguid.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\coml2api.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\objidl.h
-  Note: including file:          c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\unknwn.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\propidlbase.h
-  Note: including file:          c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\oaidl.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\urlmon.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\oleidl.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\servprov.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\msxml.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\propidl.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\oleauto.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\commdlg.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\prsht.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\stralign.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winsvc.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mcx.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\imm.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ime_cmodes.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ocidl.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgi.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgiformat.h
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54723): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54732): note: see previous definition of 'DXGI_STATUS_CLIPPED'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(14): warning C4005: 'DXGI_STATUS_NO_REDIRECTION': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54741): note: see previous definition of 'DXGI_STATUS_NO_REDIRECTION'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(15): warning C4005: 'DXGI_STATUS_NO_DESKTOP_ACCESS': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54750): note: see previous definition of 'DXGI_STATUS_NO_DESKTOP_ACCESS'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(16): warning C4005: 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54759): note: see previous definition of 'DXGI_STATUS_GRAPHICS_VIDPN_SOURCE_IN_USE'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(17): warning C4005: 'DXGI_STATUS_MODE_CHANGED': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54768): note: see previous definition of 'DXGI_STATUS_MODE_CHANGED'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(18): warning C4005: 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54777): note: see previous definition of 'DXGI_STATUS_MODE_CHANGE_IN_PROGRESS'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(21): warning C4005: 'DXGI_ERROR_INVALID_CALL': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54792): note: see previous definition of 'DXGI_ERROR_INVALID_CALL'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(22): warning C4005: 'DXGI_ERROR_NOT_FOUND': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54801): note: see previous definition of 'DXGI_ERROR_NOT_FOUND'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(23): warning C4005: 'DXGI_ERROR_MORE_DATA': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54810): note: see previous definition of 'DXGI_ERROR_MORE_DATA'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(24): warning C4005: 'DXGI_ERROR_UNSUPPORTED': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54819): note: see previous definition of 'DXGI_ERROR_UNSUPPORTED'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(25): warning C4005: 'DXGI_ERROR_DEVICE_REMOVED': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54828): note: see previous definition of 'DXGI_ERROR_DEVICE_REMOVED'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(26): warning C4005: 'DXGI_ERROR_DEVICE_HUNG': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54837): note: see previous definition of 'DXGI_ERROR_DEVICE_HUNG'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(27): warning C4005: 'DXGI_ERROR_DEVICE_RESET': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54847): note: see previous definition of 'DXGI_ERROR_DEVICE_RESET'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(28): warning C4005: 'DXGI_ERROR_WAS_STILL_DRAWING': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54856): note: see previous definition of 'DXGI_ERROR_WAS_STILL_DRAWING'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(29): warning C4005: 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54866): note: see previous definition of 'DXGI_ERROR_FRAME_STATISTICS_DISJOINT'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(30): warning C4005: 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54875): note: see previous definition of 'DXGI_ERROR_GRAPHICS_VIDPN_SOURCE_IN_USE'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(31): warning C4005: 'DXGI_ERROR_DRIVER_INTERNAL_ERROR': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54885): note: see previous definition of 'DXGI_ERROR_DRIVER_INTERNAL_ERROR'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(32): warning C4005: 'DXGI_ERROR_NONEXCLUSIVE': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54894): note: see previous definition of 'DXGI_ERROR_NONEXCLUSIVE'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(33): warning C4005: 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54903): note: see previous definition of 'DXGI_ERROR_NOT_CURRENTLY_AVAILABLE'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(34): warning C4005: 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54913): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54922): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dcommon.h
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(55186): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(55195): note: see previous definition of 'D3D11_ERROR_FILE_NOT_FOUND'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11.h(919): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(55205): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(55214): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10_1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10.h
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(55162): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(55171): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10sdklayers.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10misc.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10shader.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10effect.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10_1shader.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11sdklayers.h
-  Note: including file:   C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\wrl/client.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\weakreference.h
-  Note: including file:     c:\program files (x86)\windows kits\10\include\10.0.17134.0\winrt\inspectable.h
-  Note: including file:      c:\program files (x86)\windows kits\10\include\10.0.17134.0\winrt\hstring.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\roapi.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\activation.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\wrl\def.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\wrl\internal.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\crtdbg.h
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vcruntime_new_debug.h
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vcruntime_new.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\memory
-  Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xmemory
-  Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xmemory0
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cstdint
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\yvals.h
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\yvals_core.h
-  Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xkeycheck.h
-  Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\crtdefs.h
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\use_ansi.h
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\stdint.h
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cstdlib
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\math.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_math.h
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\limits
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\ymath.h
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cfloat
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\float.h
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\climits
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cmath
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xtgmath.h
-  Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xtr1common
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cwchar
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\wchar.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wconio.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_stdio_config.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wdirect.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wio.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_share.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wprocess.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wstdio.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wtime.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\sys/stat.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\sys/types.h
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xstddef
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cstddef
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\initializer_list
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\new
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\exception
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\type_traits
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\malloc.h
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vcruntime_exception.h
-  Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\eh.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_terminate.h
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xutility
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\utility
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\iosfwd
-  Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cstdio
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\stdio.h
-  Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cstring
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xatomic0.h
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\intrin0.h
-  Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\typeinfo
-  Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vcruntime_typeinfo.h
-  Note: including file:  e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\IndexBuffer.h
-  Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vector
-  Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\stdexcept
-  Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xstring
-  Note: including file:  e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\ConstantBuffer.h
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\ConstantBufferTypes.h
-  Note: including file:    E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\D3DX10math.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10math.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\math.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10math.inl
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10core.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10tex.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10mesh.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10async.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:  E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Assimp\include\assimp\scene.h
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\types.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\math.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\defs.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\vector3.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\vector2.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\color4.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\matrix3x3.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\matrix4x4.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\quaternion.h
-  Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\string
-  Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\istream
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\ostream
-  Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\ios
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xlocnum
-  Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\streambuf
-  Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xiosbase
-  Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xlocale
-  Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xlocinfo
-  Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xlocinfo.h
-  Note: including file:              C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\locale.h
-  Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xfacet
-  Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\system_error
-  Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cerrno
-  Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xcall_once.h
-  Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xerrc.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\share.h
-  Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xstring_insert.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\vector2.inl
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\vector3.inl
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\color4.inl
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\quaternion.inl
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\matrix3x3.inl
-  Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\algorithm
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\matrix4x4.inl
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\texture.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\mesh.h
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\light.h
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\camera.h
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\material.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\material.inl
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\anim.h
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\metadata.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\assert.h
-  Note: including file:  E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Assimp\include\assimp\Importer.hpp
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\config.h
-  Note: including file:  E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Assimp\include\assimp\postprocess.h
-  Model.cpp
-  Note: including file: e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\Model.h
-  Note: including file:  e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\Texture.h
-  Note: including file:   E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\d3dx11tex.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
-  Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\limits.h
+﻿  TextureShader.cpp
+  Note: including file: e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\TextureShader.h
+  Note: including file:  E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\d3d11.h
+  Note: including file:   C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpc.h
+  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\windows.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\winapifamily.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\winpackagefamily.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\sdkddkver.h
+  Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\excpt.h
   Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vcruntime.h
   Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\sal.h
   Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\concurrencysal.h
   Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vadefs.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\float.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpc.h
-  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\windows.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\winapifamily.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\winpackagefamily.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\sdkddkver.h
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\excpt.h
-  Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\stdarg.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\windef.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\minwindef.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\specstrings.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\specstrings_strict.h
-  Note: including file:            C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\specstrings_undef.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\driverspecs.h
-  Note: including file:            c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\sdv_driverspecs.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnt.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\ctype.h
-  Note: including file:            C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wctype.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\kernelspecs.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\basetsd.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\guiddef.h
-  Note: including file:            C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\string.h
-  Note: including file:             C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_memory.h
-  Note: including file:              C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_memcpy_s.h
-  Note: including file:               C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\errno.h
-  Note: including file:               C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vcruntime_string.h
-  Note: including file:             C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wstring.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\apiset.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\ktmtypes.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winbase.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\apisetcconv.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\minwinbase.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\processenv.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\fileapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\debugapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\utilapiset.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\handleapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\errhandlingapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\fibersapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\namedpipeapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\profileapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\heapapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ioapiset.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\synchapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\interlockedapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\processthreadsapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\sysinfoapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\memoryapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\enclaveapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\threadpoollegacyapiset.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\threadpoolapiset.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\jobapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\jobapi2.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wow64apiset.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\libloaderapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\securitybaseapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\namespaceapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\systemtopologyapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\processtopologyapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\securityappcontainer.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\realtimeapiset.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\winerror.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\timezoneapi.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wingdi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winuser.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\tvout.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnls.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\datetimeapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\stringapiset.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnls.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wincon.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wincontypes.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\consoleapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\consoleapi2.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\consoleapi3.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winver.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\verrsrc.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winreg.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\reason.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnetwk.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\wnnc.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\cderr.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\dde.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ddeml.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\dlgs.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\lzexpand.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsystem.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mciapi.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmiscapi.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmiscapi2.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\playsoundapi.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmeapi.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\timeapi.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\joystickapi.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\nb30.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpc.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcdce.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcdcep.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\rpcnsi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcnterr.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcasync.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\shellapi.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winperf.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winsock.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\inaddr.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wincrypt.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\bcrypt.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ncrypt.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\dpapi.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winefs.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winscard.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\wtypes.h
-  Note: including file:          c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\rpcndr.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\rpcnsip.h
-  Note: including file:           E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\rpcsal.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:          c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\wtypesbase.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\guiddef.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winioctl.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winsmcrd.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winspool.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\prsht.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ole2.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\objbase.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\combaseapi.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\stdlib.h
-  Note: including file:            C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_malloc.h
-  Note: including file:            C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_search.h
-  Note: including file:             C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\stddef.h
-  Note: including file:            C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wstdlib.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\unknwnbase.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\objidlbase.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\guiddef.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\cguid.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\coml2api.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\objidl.h
-  Note: including file:            c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\unknwn.h
-  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\propidlbase.h
-  Note: including file:            c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\oaidl.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\urlmon.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\oleidl.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\servprov.h
-  Note: including file:           c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\msxml.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\propidl.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\oleauto.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\commdlg.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\prsht.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\stralign.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winsvc.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mcx.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\imm.h
-  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ime_cmodes.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ocidl.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgi.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h
-  Note: including file:        e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgiformat.h
+  Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\stdarg.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\windef.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\minwindef.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\specstrings.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\specstrings_strict.h
+  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\specstrings_undef.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\driverspecs.h
+  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\sdv_driverspecs.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnt.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\ctype.h
+  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt.h
+  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wctype.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\kernelspecs.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\basetsd.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\guiddef.h
+  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\string.h
+  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_memory.h
+  Note: including file:           C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_memcpy_s.h
+  Note: including file:            C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\errno.h
+  Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vcruntime_string.h
+  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wstring.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack4.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack4.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack4.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack2.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack2.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack8.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\poppack.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\apiset.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\ktmtypes.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winbase.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\apisetcconv.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\minwinbase.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\processenv.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\fileapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\debugapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\utilapiset.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\handleapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\errhandlingapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\fibersapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\namedpipeapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\profileapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\heapapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ioapiset.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\synchapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\interlockedapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\processthreadsapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\sysinfoapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\memoryapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\enclaveapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\threadpoollegacyapiset.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\threadpoolapiset.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\jobapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\jobapi2.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wow64apiset.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\libloaderapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\securitybaseapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\namespaceapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\systemtopologyapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\processtopologyapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\securityappcontainer.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\realtimeapiset.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\winerror.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\timezoneapi.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wingdi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winuser.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack2.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\tvout.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnls.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\datetimeapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\stringapiset.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnls.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wincon.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wincontypes.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\consoleapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\consoleapi2.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\consoleapi3.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winver.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\verrsrc.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winreg.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\reason.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winnetwk.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\wnnc.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\cderr.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\dde.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ddeml.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\dlgs.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\lzexpand.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsystem.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mciapi.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmiscapi.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmiscapi2.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\playsoundapi.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmeapi.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\timeapi.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\joystickapi.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mmsyscom.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\nb30.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpc.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcdce.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcdcep.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\rpcnsi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcnterr.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpcasync.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\shellapi.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winperf.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winsock.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\inaddr.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\wincrypt.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\bcrypt.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ncrypt.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\dpapi.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winefs.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winscard.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\wtypes.h
+  Note: including file:       c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\rpcndr.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\rpcnsip.h
+  Note: including file:        E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\rpcsal.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:       c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\wtypesbase.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\guiddef.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winioctl.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:      c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winsmcrd.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winspool.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\prsht.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack4.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ole2.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\objbase.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\combaseapi.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\stdlib.h
+  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_malloc.h
+  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_search.h
+  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\stddef.h
+  Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_wstdlib.h
+  Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\limits.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\unknwnbase.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\objidlbase.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\guiddef.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\cguid.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\coml2api.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\objidl.h
+  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\unknwn.h
+  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\propidlbase.h
+  Note: including file:         c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\oaidl.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\urlmon.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\oleidl.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\servprov.h
+  Note: including file:        c:\program files (x86)\windows kits\10\include\10.0.17134.0\um\msxml.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\propidl.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\oleauto.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
+  Note: including file:       C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\commdlg.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\prsht.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack1.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\stralign.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\winsvc.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\mcx.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\imm.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ime_cmodes.h
+  Note: including file:   C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\ocidl.h
+  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgi.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgiformat.h
 e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(12): warning C4005: 'DXGI_STATUS_OCCLUDED': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54723): note: see previous definition of 'DXGI_STATUS_OCCLUDED'
 e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(13): warning C4005: 'DXGI_STATUS_CLIPPED': macro redefinition
@@ -740,7 +281,7 @@ e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsof
   c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54913): note: see previous definition of 'DXGI_ERROR_REMOTE_CLIENT_DISCONNECTED'
 e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\dxgitype.h(35): warning C4005: 'DXGI_ERROR_REMOTE_OUTOFMEMORY': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(54922): note: see previous definition of 'DXGI_ERROR_REMOTE_OUTOFMEMORY'
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dcommon.h
+  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dcommon.h
 e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11.h(917): warning C4005: 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(55186): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
 e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11.h(918): warning C4005: 'D3D11_ERROR_FILE_NOT_FOUND': macro redefinition
@@ -749,25 +290,43 @@ e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsof
   c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(55205): note: see previous definition of 'D3D11_ERROR_TOO_MANY_UNIQUE_VIEW_OBJECTS'
 e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11.h(920): warning C4005: 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(55214): note: see previous definition of 'D3D11_ERROR_DEFERRED_CONTEXT_MAP_WITHOUT_INITIAL_DISCARD'
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10_1.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10.h
+  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10_1.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10.h
 e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10.h(608): warning C4005: 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(55162): note: see previous definition of 'D3D10_ERROR_TOO_MANY_UNIQUE_STATE_OBJECTS'
 e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10.h(609): warning C4005: 'D3D10_ERROR_FILE_NOT_FOUND': macro redefinition
   c:\program files (x86)\windows kits\10\include\10.0.17134.0\shared\winerror.h(55171): note: see previous definition of 'D3D10_ERROR_FILE_NOT_FOUND'
-  Note: including file:        e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10sdklayers.h
-  Note: including file:        e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10misc.h
-  Note: including file:        e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10shader.h
-  Note: including file:        e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10effect.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10_1shader.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11sdklayers.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10sdklayers.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10misc.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10shader.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10effect.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10_1shader.h
+  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11sdklayers.h
+  Note: including file:  E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\d3dx10math.h
+  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10.h
+  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\float.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10math.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10.h
+  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\math.h
+  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_math.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10math.inl
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10core.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10tex.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10mesh.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10async.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
+  Note: including file:  E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\d3dx11async.h
+  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11core.h
   Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11core.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11tex.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11async.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11tex.h
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
+  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11async.h
   Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\fstream
   Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\istream
   Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\ostream
@@ -785,7 +344,6 @@ e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsof
   Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cmath
   Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cstdlib
   Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\math.h
-  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_math.h
   Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xtgmath.h
   Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xtr1common
   Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cstdio
@@ -842,88 +400,4 @@ e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsof
   Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xcall_once.h
   Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xerrc.h
   Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\share.h
-  Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\iostream
-  Note: including file:  e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\Mesh.h
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\VertexBuffer.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\wrl/client.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\weakreference.h
-  Note: including file:      c:\program files (x86)\windows kits\10\include\10.0.17134.0\winrt\inspectable.h
-  Note: including file:       c:\program files (x86)\windows kits\10\include\10.0.17134.0\winrt\hstring.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\roapi.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\activation.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\wrl\def.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\winrt\wrl\internal.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\pshpack8.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\poppack.h
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\IndexBuffer.h
-  Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\vector
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\ConstantBuffer.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\ConstantBufferTypes.h
-  Note: including file:     E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\D3DX10math.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10math.h
-  Note: including file:        e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10.h
-  Note: including file:        C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\math.h
-  Note: including file:        e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10math.inl
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10core.h
-  Note: including file:        e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10tex.h
-  Note: including file:        e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10mesh.h
-  Note: including file:        e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:       e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10async.h
-  Note: including file:        e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:   E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Assimp\include\assimp\scene.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\types.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\math.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\defs.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\vector3.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\vector2.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\color4.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\matrix3x3.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\matrix4x4.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:      e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\quaternion.h
-  Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\string
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xstring_insert.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\vector2.inl
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\vector3.inl
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\color4.inl
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\quaternion.inl
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\matrix3x3.inl
-  Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\algorithm
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\matrix4x4.inl
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\texture.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\mesh.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\light.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\camera.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\material.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/pushpack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\./Compiler/poppack1.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\material.inl
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\anim.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\metadata.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\assert.h
-  Note: including file:   E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Assimp\include\assimp\Importer.hpp
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\assimp\include\assimp\config.h
-  Note: including file:   E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Assimp\include\assimp\postprocess.h
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\model.cpp(48): warning C4018: '<': signed/unsigned mismatch
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\model.cpp(71): warning C4018: '<': signed/unsigned mismatch
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\model.cpp(90): warning C4018: '<': signed/unsigned mismatch
-e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\model.cpp(192): warning C4305: '+=': truncation from 'double' to 'float'
-  Generating Code...
   Animation.vcxproj -> E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Debug\Animation.exe

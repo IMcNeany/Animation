@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(ID3D11Device* _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance)
+Game::Game(ID3D11Device* _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance, D3DXMATRIX world, ID3D11DeviceContext* context)
 {
 	m_hWnd = _hWnd;
 	gameData = new GameData;
@@ -32,11 +32,49 @@ Game::Game(ID3D11Device* _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance)
 	hr = m_mouse->SetDataFormat(&c_dfDIMouse);
 	hr = m_mouse->SetCooperativeLevel(_hWnd, DISCL_FOREGROUND |
 		DISCL_NONEXCLUSIVE);
+
+
 	// Create the texture shader object.
+/*
+	D3D11_INPUT_ELEMENT_DESC layout[] =
+	{
+		{"POSITION", 0, DXGI_FORMAT::DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA, 0  },
+		{"TEXCOORD", 0, DXGI_FORMAT::DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA, 0  },
+	};
+
+	UINT numElements = ARRAYSIZE(layout);
+
+	if (!vertexshader.Initialize(_pd3dDevice, L"..//Animation//texture.vs", layout, numElements))
+	{
+		//error
+	}
+
+	if (!pixelshader.Initialize(_pd3dDevice, L"..//Animation//texture.ps"))
+	{
+		//error
+	}*/
+	textureShader = new TextureShader;
+	if (!textureShader)
+	{
+		//return false;
+	}
+
+	// Initialize the texture shader object.
+	bool result = textureShader->Initialize(_pd3dDevice, _hWnd);
+	if (!result)
+	{
+		//MessageBox(hwnd, L"Could not initialize the texture shader object.", L"Error", MB_OK);
+		//return false;
+	}
 
 	//set current frame time as otherwise won't be initilised for player
 	DWORD currentTime = GetTickCount();
-	float dt = min((float)(currentTime - playTime) / 1000.0f, 0.1f);
+	float dt = 0.1f;
+	if ((float)(currentTime - playTime) / 1000.0f < dt)
+	{
+		dt = (currentTime - playTime) / 1000.0f;
+	}
+	
 	gameData->frameTick = dt;
 	playTime = currentTime;
 	//camera->SetFrameTime((float)gameData->frameTick);
@@ -47,7 +85,9 @@ Game::Game(ID3D11Device* _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance)
 	//camera->SetOffset(10.0f, 30.0f, -10.0f);
 	camera->SetOffset(0.0f, 3.0f, -5.0f);
 
-	
+	model = new Model();
+	model->SetWorldMatrix(worldMatrix);
+	model->Initialize("Data\\Norman.obj", _pd3dDevice, NULL, _hWnd, context);
 
 	/*grassBlades = new Grass();
 	grassBlades->Initialize(_pd3dDevice, L"../Animation/data/grass.dds", _hWnd);
@@ -57,96 +97,9 @@ Game::Game(ID3D11Device* _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance)
 	grassBlades->SetWorldMatrix(worldMatrix);
 	gameObjects.push_back(grassBlades);*/
 	
-	////loads in the environment assets
-	////environment = new Environment(_pd3dDevice,_hWnd);
 
  // camera->SetFollowObject(player);
-	/////////////////////
-	/////Load in objects ////
-	////////////////////
-	////triangle = new Triangle();
-	////triangle->Initialize(_pd3dDevice);
 
-	//float a = 0;
-	//float b = -4;
-	//float c = 0;
-
-	///* for (int i = 0; i < 3; i++)
-	//{
-	//	for (int j = 0; j < 3; j++)
-	//	{
-	//		cube = new Cube();
-	//		cube->Initialize(_pd3dDevice, L"../Collision Engine/data//dots.dds", _hWnd);
-	//		cube->SetPos((D3DXVECTOR3(a, b, c)));
-	//		cube->SetStatic(true);
-	//		cube->SetVelocity(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-	//		gameObjects.push_back(cube);
-
-	//		a += 1;
-	//	}
-	//	c += 1;
-	//	a = 0;
-	//}*/
-	//sphere = new Sphere();
-	//sphere->Initialize(_pd3dDevice, L"../Animation/data/dots.dds", _hWnd);
-	//sphere->SetPos(D3DXVECTOR3(3, 5, 0));
-	//sphere->SetStatic(false);
-	//sphere->SetVelocity(D3DXVECTOR3(-1, 0, 0));
-	//gameObjects.push_back(sphere);
-
-	 //spawn spheres
-	// srand(time(NULL));
-	//	 random_integer = lowest + rand() % range
-
-	/* for (int i = 0; i < 20; i++)
-	 {
-		 int posX = rand() % 30 + 0;
-		 int posY = rand() % 30 + 0;
-		 int posZ = rand() % 30 + 0;
-
-		 int velX = rand() % 10 + -5;
-		 int velY = rand() % 10 + -5;// -5 + rand() % 5 + 1;
-		 int velZ = rand() % 10 + -5;// -5 + rand() % 5 + 1;
-		 char  msg[300];
-
-		 sprintf_s(msg, "X variable is %d\n ", velX);
-		 OutputDebugStringA(msg);
-
-		 grassBlades = new Grass();
-		 grassBlades->Initialize(_pd3dDevice, L"../Animation/data/grass.dds", _hWnd);
-		 grassBlades->SetPos(D3DXVECTOR3(posX, posY, posZ));
-		 grassBlades->SetStatic(false);
-		 grassBlades->SetVelocity(D3DXVECTOR3(velX, velY, velZ));
-		 gameObjects.push_back(grassBlades);
-	 }*/
-
-/*	
-
-	//cube = new Cube();
-	//cube->Initialize(_pd3dDevice, L"../Collision Engine/data/dots.dds", _hWnd);
-	//cube->SetStatic(true);
-	//cube->SetPos(D3DXVECTOR3(0, 0, 0));
-	//cube->SetVelocity(D3DXVECTOR3(0.0f,0.0f,0.0f));
-	////cubeObjects.push_back(cube);
-	//gameObjects.push_back(cube);
-
-	//cube = new Cube();
-	//cube->Initialize(_pd3dDevice, L"../Collision Engine/data/companion_cube.dds", _hWnd);
-	//cube->SetStatic(true);
-	//cube->SetPos(D3DXVECTOR3(3, 0, 0));
-	//cube->SetVelocity(D3DXVECTOR3 (-3.0f,0.0f,0.0f));
-	//gameObjects.push_back(cube);
-
-	//m_ColorShader = new ColorShaderClass;
-	//m_ColorShader->Initialize(_pd3dDevice, _hWnd);
-
-
-	/*cube = new Cube();
-	cube->Initialize(_pd3dDevice, L"../Collision Engine/data/dots.dds", _hWnd);
-	cube->SetStatic(true);
-	cube->SetPos(D3DXVECTOR3(6, 0, 0));
-	cube->SetVelocity(D3DXVECTOR3(0.0f,0.0f,0.0f));
-	gameObjects.push_back(cube);*/
 
 
 	//textureShader = new TextureShader;
@@ -241,13 +194,17 @@ bool Game::Tick(ID3D11DeviceContext* _pd3dImmediateContext, D3DXMATRIX projectio
 	}
 
 	DWORD currentTime = GetTickCount();
-	float dt = min((float)(currentTime - playTime) / 1000.0f, 0.1f);
+	float dt = 0.1f;
+	if ((float)(currentTime - playTime) / 1000.0f < dt)
+	{
+		dt = (currentTime - playTime) / 1000.0f;
+	}
 	gameData->frameTick = dt;
 	playTime = currentTime;
 	camera->SetFrameTime((float)gameData->frameTick);
 	//player->SetFrameTime((float)gameData->frameTick);
 	CheckKeyPressed();
-
+	model->Render(_pd3dImmediateContext, (projectionMatrix * viewMatrix));
 	//need to change for all objects
 	for (list<GameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
 	{

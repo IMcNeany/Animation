@@ -11,7 +11,7 @@ class Model
 public:
 	Model();
 	~Model();
-	void Initialize(std::string filePath, ID3D11Device* device, WCHAR* textureFilename, HWND);
+	void Initialize(std::string filePath, ID3D11Device* device, WCHAR* textureFilename, HWND, ID3D11DeviceContext*);
 	void Render(ID3D11DeviceContext*, D3DXMATRIX);
 	void SetTexture(ID3D11ShaderResourceView * texture);
 
@@ -22,6 +22,7 @@ public:
 	void SetRotation(D3DXVECTOR3);
 	void AdjustRotation(D3DXVECTOR3);
 	void SetLookAtPos(D3DXVECTOR3 lookAtPos);
+	void SetWorldMatrix(D3DXMATRIX);
 	D3DXVECTOR3  GetForwardVector() {return vec_forward;};
 	D3DXVECTOR3  GetRightVector() { return vec_right; };
 	D3DXVECTOR3  GetBackwardVector() { return vec_backward; };
@@ -34,19 +35,18 @@ private:
 	Mesh ProcessMesh(aiMesh * mesh, const aiScene * scene);
 	void UpdateWorldMatrix();
 
-	ID3D11Device * device = nullptr;
-	ID3D11DeviceContext * deviceContext = nullptr;
-	ConstantBuffer<CB_VS_vertexshader> * cb_vs_vertexshader = nullptr;
-	ID3D11ShaderResourceView * texture = nullptr;
+	ID3D11Device * device;
+	ID3D11DeviceContext * deviceContext;
+	ConstantBuffer<CB_VS_vertexshader> * cb_vs_vertexshader;
+	ID3D11ShaderResourceView * texture;
 
-	D3DXMATRIX* worldMatrix = D3DXMatrixIdentity(worldMatrix);
-
+	D3DXMATRIX* worldMatrix;
 	
 	D3DXVECTOR3 posVector;
 	D3DXVECTOR3 rotVector;
 	D3DXVECTOR3 position;
 	D3DXVECTOR3 rotation;
-
+	D3DXMATRIX rotationMatrix;
 
 	D3DXVECTOR3 DEFAULT_FORWARD_VECTOR = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
 	D3DXVECTOR3 DEFAULT_UP_VECTOR = D3DXVECTOR3(0.0f, 1.0f, 0.0f);

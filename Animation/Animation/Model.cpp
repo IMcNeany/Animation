@@ -8,17 +8,18 @@ Model::~Model()
 {
 }
 
-void Model::Initialize(std::string filePath, ID3D11Device * device, WCHAR * textureFilename, HWND)
+void Model::Initialize(std::string filePath, ID3D11Device * idevice, WCHAR * textureFilename, HWND, ID3D11DeviceContext* _deviceContext)
 {
-	device = device;
-	deviceContext = deviceContext;
+	device = idevice;
+	deviceContext = _deviceContext;
 	texture = texture;
-	cb_vs_vertexshader = cb_vs_vertexshader;
+	//cb_vs_vertexshader = &cb_vs;
 
 	if (!LoadModel(filePath))
 	{
 		//return false;
 		//error
+		OutputDebugStringW(L"nope");
 	}
 
 
@@ -38,12 +39,12 @@ void Model::Render(ID3D11DeviceContext*, D3DXMATRIX viewProjectionMatrix)
 	//Update Constant buffer with WVP Matrix
 	D3DXMATRIX worldViewProjection;
 	D3DXMatrixMultiply(&worldViewProjection, worldMatrix, &viewProjectionMatrix);
-	cb_vs_vertexshader->data.mat = worldViewProjection; //viewProjectionMatrix; //Calculate World-View-Projection Matrix
-	D3DXMatrixTranspose(&cb_vs_vertexshader->data.mat, &cb_vs_vertexshader->data.mat); //XMMatrixTranspose(cb_vs_vertexshader->data.mat);
-	cb_vs_vertexshader->ApplyChanges();
-	deviceContext->VSSetConstantBuffers(0, 1, cb_vs_vertexshader->GetAddressOf());
+	//cb_vs_vertexshader->data.mat = worldViewProjection; //viewProjectionMatrix; //Calculate World-View-Projection Matrix
+	//D3DXMatrixTranspose(&cb_vs_vertexshader->data.mat, &cb_vs_vertexshader->data.mat); //XMMatrixTranspose(cb_vs_vertexshader->data.mat);
+	//cb_vs_vertexshader->ApplyChanges();
+	//deviceContext->VSSetConstantBuffers(0, 1, cb_vs_vertexshader->GetAddressOf());
 
-	deviceContext->PSSetShaderResources(0, 1, &texture); //Set Texture
+	//deviceContext->PSSetShaderResources(0, 1, &texture); //Set Texture
 
 	for (int i = 0; i < meshes.size(); i++)
 	{
@@ -117,20 +118,17 @@ Mesh Model::ProcessMesh(aiMesh * mesh, const aiScene * scene)
 
 void Model::UpdateWorldMatrix()
 {
-	D3DXMatrixRotationYawPitchRoll(worldMatrix, rotation.y, rotation.x, rotation.z); 
-	D3DXMatrixTranslation(worldMatrix, position.x, position.y, position.z);
+	//D3DXMatrixRotationYawPitchRoll(worldMatrix, rotation.y, rotation.x, rotation.z); 
+	//D3DXMatrixTranslation(worldMatrix, position.x, position.y, position.z);
 	//this->worldMatrix = XMMatrixRotationRollPitchYaw(this->rot.x, this->rot.y, this->rot.z) * XMMatrixTranslation(this->pos.x, this->pos.y, this->pos.z);
-	D3DXMATRIX rotationMatrix;
+
 	D3DXMatrixRotationYawPitchRoll(&rotationMatrix, 0.0f, 0.0f, rotation.y);
 	//XMMATRIX vecRotationMatrix = XMMatrixRotationRollPitchYaw(0.0f, this->rot.y, 0.0f);
 	D3DXVec3TransformCoord(&vec_forward, &DEFAULT_FORWARD_VECTOR, &rotationMatrix);
 	D3DXVec3TransformCoord(&vec_backward, &DEFAULT_BACKWARD_VECTOR, &rotationMatrix);
 	D3DXVec3TransformCoord(&vec_left, &DEFAULT_LEFT_VECTOR, &rotationMatrix);
 	D3DXVec3TransformCoord(&vec_right, &DEFAULT_RIGHT_VECTOR, &rotationMatrix);
-	//this->vec_forward = XMVector3TransformCoord(this->DEFAULT_FORWARD_VECTOR, vecRotationMatrix);
-	//this->vec_backward = XMVector3TransformCoord(this->DEFAULT_BACKWARD_VECTOR, vecRotationMatrix);
-	//this->vec_left = XMVector3TransformCoord(this->DEFAULT_LEFT_VECTOR, vecRotationMatrix);
-	//this->vec_right = XMVector3TransformCoord(this->DEFAULT_RIGHT_VECTOR, vecRotationMatrix);
+
 }
 
 void Model::SetPosition(D3DXVECTOR3 pos)
@@ -192,6 +190,11 @@ void Model::SetLookAtPos(D3DXVECTOR3 lookAtPos)
 		yaw += D3DX_PI;
 
 	SetRotation(D3DXVECTOR3(pitch, yaw, 0.0f));
+}
+
+void Model::SetWorldMatrix(D3DXMATRIX world)
+{
+	worldMatrix = &world;
 }
 
 

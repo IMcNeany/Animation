@@ -11,6 +11,8 @@
 #include <dinput.h>
 #include<d3d11.h>
 #include "GameData.h"
+#include "Model.h"
+#include "Shaders.h"
 //#include "Cube.h"
 //#include "grass.h"
 //#include "Sphere.h"
@@ -26,6 +28,7 @@
 //#include "System.h"
 #include "GameObject.h"
 #include<vector>
+#include "TextureShader.h"
 using std::list;
 using namespace std;
 //using std::unique_ptr;
@@ -33,7 +36,7 @@ using namespace std;
 class Game
 {
 public:
-	Game(ID3D11Device* _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance);
+	Game(ID3D11Device* _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance, D3DXMATRIX, ID3D11DeviceContext*);
 	~Game();
 	list<GameObject *> gameObjects;
 	bool Tick(ID3D11DeviceContext*, D3DXMATRIX, D3DXMATRIX);
@@ -48,7 +51,7 @@ public:
 
 
 	Texture* texture;
-	//TextureShader* textureShader;
+	TextureShader* textureShader;
 	//Triangle* triangle;
 	//ColorShaderClass* m_ColorShader;
 	
@@ -71,6 +74,7 @@ protected:
 	Camera* camera;
 	//Grass* grassBlades;
 	//System* system;
+	Model* model;
 	ID3D11RenderTargetView* renderTargetView;
 	ID3D11DepthStencilView* depthStencilView;
 	D3DXMATRIX viewMatrix;
@@ -81,6 +85,11 @@ protected:
 	//list<Sphere*> sphereObjects;
 	//Environment* environment;
 	//Player* player;
+
+	VertexShader vertexshader;
+	PixelShader pixelshader;
+	ConstantBuffer<CB_VS_vertexshader> cb_vs_vertexshader;
+	ConstantBuffer<CB_PS_pixelshader> cb_ps_pixelshader;
 
 	void CheckKeyPressed();
 	void CollisionCheck();
