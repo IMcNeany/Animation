@@ -8,7 +8,7 @@ Model::~Model()
 {
 }
 
-void Model::Initialize(std::string filePath, ID3D11Device * idevice, WCHAR * textureFilename, HWND, ID3D11DeviceContext* _deviceContext)
+void Model::Initialize(std::string filePath, ID3D11Device * idevice, std::string  textureFilename, HWND, ID3D11DeviceContext* _deviceContext)
 {
 	device = idevice;
 	deviceContext = _deviceContext;
@@ -21,31 +21,37 @@ void Model::Initialize(std::string filePath, ID3D11Device * idevice, WCHAR * tex
 		//error
 		OutputDebugStringW(L"nope");
 	}
-
-
 	SetPosition(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	SetRotation(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	UpdateWorldMatrix();
 
 }
 
-void Model::SetTexture(ID3D11ShaderResourceView * texture)
+void Model::SetTexture(ID3D11Device* device , std::string textureFilename)
 {
-	texture = texture;
+	texture = new Texture;
+
+	// Initialize the texture object.
+	bool result = texture->Initialize(device, textureFilename);
+	if (!result)
+	{
+		
+	}
+	//texture->GetTexture();
 }
 
 void Model::Render(ID3D11DeviceContext*, D3DXMATRIX viewProjectionMatrix)
 {
 	//Update Constant buffer with WVP Matrix
-	D3DXMATRIX worldViewProjection;
-	D3DXMatrixMultiply(&worldViewProjection, worldMatrix, &viewProjectionMatrix);
+	//D3DXMATRIX worldViewProjection;
+	//D3DXMatrixMultiply(&worldViewProjection, worldMatrix, &viewProjectionMatrix);
 	//cb_vs_vertexshader->data.mat = worldViewProjection; //viewProjectionMatrix; //Calculate World-View-Projection Matrix
 	//D3DXMatrixTranspose(&cb_vs_vertexshader->data.mat, &cb_vs_vertexshader->data.mat); //XMMatrixTranspose(cb_vs_vertexshader->data.mat);
 	//cb_vs_vertexshader->ApplyChanges();
 	//deviceContext->VSSetConstantBuffers(0, 1, cb_vs_vertexshader->GetAddressOf());
 
 	//deviceContext->PSSetShaderResources(0, 1, &texture); //Set Texture
-
+	RenderBuffers(deviceContext);
 	for (int i = 0; i < meshes.size(); i++)
 	{
 		meshes[i].Render();
@@ -114,6 +120,35 @@ Mesh Model::ProcessMesh(aiMesh * mesh, const aiScene * scene)
 	}
 
 	return Mesh(device, deviceContext, vertices, indices);
+}
+
+void Model::RenderBuffers(ID3D11DeviceContext* device)
+{
+
+	unsigned int strides[2];
+	unsigned int offsets[2];
+	ID3D11Buffer* bufferPointers[2];
+
+
+
+	strides[0] = sizeof(VertexType);
+	strides[1] = sizeof(InstanceType);
+
+	// Set the buffer offsets.
+	offsets[0] = 0;
+	offsets[1] = 0;
+
+	bufferPointers[0] = vertexBuffer;
+	bufferPointers[1] = instanceBuffer;
+
+	// Set the vertex buffer to active in the input assembler so it can be rendered.
+	device->IASetVertexBuffers(0, 1, &vertexBuffer, strides, offsets);
+	device->IASetVertexBuffers(0, 2, bufferPointers, strides, offsets);
+	// Set the index buffer to active in the input assembler so it can be rendered.
+	device->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+
+	// Set the type of primitive that should be rendered from this vertex buffer, in this case triangles.
+	device->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 }
 
 void Model::UpdateWorldMatrix()

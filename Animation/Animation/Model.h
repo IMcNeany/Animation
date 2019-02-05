@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include "Mesh.h"
+#include <string>
 
 using namespace std;
 
@@ -11,9 +12,9 @@ class Model
 public:
 	Model();
 	~Model();
-	void Initialize(std::string filePath, ID3D11Device* device, WCHAR* textureFilename, HWND, ID3D11DeviceContext*);
+	void Initialize(std::string filePath, ID3D11Device* device, std::string textureFilename, HWND, ID3D11DeviceContext*);
 	void Render(ID3D11DeviceContext*, D3DXMATRIX);
-	void SetTexture(ID3D11ShaderResourceView * texture);
+	void SetTexture(ID3D11Device* device, std::string textureFilename);
 
 	D3DXVECTOR3 GetPosition() { return position; };
 	D3DXVECTOR3  GetRotation() { return rotation; };
@@ -29,16 +30,34 @@ public:
 	D3DXVECTOR3  GetLeftVector() { return vec_left;};
 
 private:
+
+	struct VertexType
+	{
+		D3DXVECTOR3 position;
+		D3DXVECTOR2 texture;
+		D3DXVECTOR3 normal;
+	};
+
+	struct InstanceType
+	{
+		D3DXVECTOR3 position;
+	};
+
 	std::vector<Mesh> meshes;
 	bool LoadModel(const std::string & filePath);
 	void ProcessNode(aiNode * node, const aiScene * scene);
 	Mesh ProcessMesh(aiMesh * mesh, const aiScene * scene);
 	void UpdateWorldMatrix();
 
+	void RenderBuffers(ID3D11DeviceContext*);
 	ID3D11Device * device;
 	ID3D11DeviceContext * deviceContext;
-	ConstantBuffer<CB_VS_vertexshader> * cb_vs_vertexshader;
-	ID3D11ShaderResourceView * texture;
+	//ConstantBuffer<CB_VS_vertexshader> * cb_vs_vertexshader;
+	//ID3D11ShaderResourceView * texture;
+	ID3D11Buffer* vertexBuffer;
+	ID3D11Buffer* indexBuffer;
+	ID3D11Buffer* instanceBuffer;
+	Texture* texture;
 
 	D3DXMATRIX* worldMatrix;
 	

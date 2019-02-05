@@ -1,5 +1,5 @@
-﻿  TextureShader.cpp
-  Note: including file: e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\TextureShader.h
+﻿  Texture.cpp
+  Note: including file: e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\Texture.h
   Note: including file:  E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\d3d11.h
   Note: including file:   C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared\rpc.h
   Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\um\windows.h
@@ -302,32 +302,17 @@ e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsof
   Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10effect.h
   Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d10_1shader.h
   Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3d11sdklayers.h
-  Note: including file:  E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\d3dx10math.h
-  Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10.h
-  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\float.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10math.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10.h
-  Note: including file:     C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\math.h
-  Note: including file:      C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_math.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\D3DX10math.inl
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10core.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10tex.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10mesh.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10async.h
-  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx10.h
-  Note: including file:  E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\d3dx11async.h
+  Note: including file:  E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include\d3dx11tex.h
   Note: including file:   e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
+  Note: including file:    C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\float.h
   Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
   Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11core.h
   Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
   Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11tex.h
   Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
   Note: including file:    e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11async.h
-  Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\fstream
+  Note: including file:     e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11.h
+  Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\string
   Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\istream
   Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\ostream
   Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\ios
@@ -344,6 +329,7 @@ e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsof
   Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cmath
   Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cstdlib
   Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\math.h
+  Note: including file:          C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\corecrt_math.h
   Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xtgmath.h
   Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xtr1common
   Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\cstdio
@@ -400,4 +386,8 @@ e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsof
   Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xcall_once.h
   Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xerrc.h
   Note: including file:         C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\ucrt\share.h
-  Animation.vcxproj -> E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Debug\Animation.exe
+  Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include\xstring_insert.h
+e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\texture.cpp(18): error C2440: 'type cast': cannot convert from 'std::string' to 'LPCTSTR'
+  e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\texture.cpp(18): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+e:\isobel\documents\games tech year 3\advanced tech\animation\animation\animation\texture.cpp(18): error C2660: 'D3DX11CreateShaderResourceViewFromFileA': function does not take 5 arguments
+  e:\isobel\documents\games tech year 3\advanced tech\animation\animation\microsoft directx sdk (june 2010)\include\d3dx11tex.h(439): note: see declaration of 'D3DX11CreateShaderResourceViewFromFileA'

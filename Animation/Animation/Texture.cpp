@@ -10,19 +10,19 @@ Texture::~Texture()
 
 }
 
-bool Texture::Initialize(ID3D11Device* device, WCHAR* filename)
+bool Texture::Initialize(ID3D11Device* device, std::string filename)
 {
 	HRESULT result;
 
-
 	// Load the texture in.
-	result = D3DX11CreateShaderResourceViewFromFile(device, (LPCSTR)filename, NULL, NULL, &texture, NULL);
+	result = D3DX11CreateShaderResourceViewFromFile(device,&filename, NULL, NULL, &texture, NULL);
 	if (FAILED(result))
 	{
 		return false;
 	}
 
 	return true;
+
 }
 
 void Texture::Shutdown()

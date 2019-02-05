@@ -27,7 +27,8 @@ bool TextureShader::Initialize(ID3D11Device* device, HWND hwnd)
 
 
 	// Initialize the vertex and pixel shaders.
-	result = InitializeShader(device, hwnd,(WCHAR*) L"../Animation/texture.vs", (WCHAR*)L"../Animation/texture.ps");
+	
+	result = InitializeShader(device, hwnd, "../Animation/texture.vs", "../Animation/texture.ps");
 	if (!result)
 	{
 		return false;
@@ -62,7 +63,7 @@ bool TextureShader::Render(ID3D11DeviceContext* deviceContext,int vertexCount, i
 }
 
 
-bool TextureShader::InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR* vsFilename, WCHAR* psFilename)
+bool TextureShader::InitializeShader(ID3D11Device* device, HWND hwnd, LPCSTR vsFilename, LPCSTR psFilename)
 {
 	HRESULT result;
 	ID3D10Blob* errorMessage;
@@ -80,13 +81,13 @@ bool TextureShader::InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR* vsF
 	pixelShaderBuffer = 0;
 
 	// Compile the vertex shader code.
-	result = D3DX11CompileFromFile((LPCSTR)vsFilename, NULL, NULL, "VertexTextureShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, NULL,
+	result = D3DX11CompileFromFile(vsFilename, NULL, NULL, "VertexTextureShader", "vs_5_0", D3D10_SHADER_ENABLE_STRICTNESS, 0, NULL,
 		&vertexShaderBuffer, &errorMessage, NULL);
 	if (FAILED(result))
 	{
 		if (errorMessage)
 		{
-			OutputShaderErrorMessage(errorMessage, hwnd, vsFilename);
+			//OutputShaderErrorMessage(errorMessage, hwnd, &vsFilename);
 		}
 		// If there was nothing in the error message then it simply could not find the shader file itself.
 		else
@@ -104,7 +105,7 @@ bool TextureShader::InitializeShader(ID3D11Device* device, HWND hwnd, WCHAR* vsF
 	{
 		if (errorMessage)
 		{
-			OutputShaderErrorMessage(errorMessage, hwnd, psFilename);
+			//OutputShaderErrorMessage(errorMessage, hwnd, psFilename);
 		}
 		else
 		{

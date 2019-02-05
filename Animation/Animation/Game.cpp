@@ -88,6 +88,7 @@ Game::Game(ID3D11Device* _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance, D3DXMATR
 	model = new Model();
 	model->SetWorldMatrix(worldMatrix);
 	model->Initialize("Data\\Norman.obj", _pd3dDevice, NULL, _hWnd, context);
+	model->SetTexture(_pd3dDevice,"Data/Dots.dds" );
 
 	/*grassBlades = new Grass();
 	grassBlades->Initialize(_pd3dDevice, L"../Animation/data/grass.dds", _hWnd);
