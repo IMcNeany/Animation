@@ -45,7 +45,7 @@ void TextureShader::Shutdown()
 }
 
 
-bool TextureShader::Render(ID3D11DeviceContext* deviceContext,int vertexCount, int instanceCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix,
+bool TextureShader::Render(ID3D11DeviceContext* deviceContext,int vertexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix,
 	D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView* texture)
 {
 	bool result;
@@ -57,7 +57,7 @@ bool TextureShader::Render(ID3D11DeviceContext* deviceContext,int vertexCount, i
 		return false;
 	}
 
-	RenderShader(deviceContext,vertexCount, instanceCount);
+	RenderShader(deviceContext,vertexCount);
 
 	return true;
 }
@@ -88,6 +88,8 @@ bool TextureShader::InitializeShader(ID3D11Device* device, HWND hwnd, LPCSTR vsF
 		if (errorMessage)
 		{
 			//OutputShaderErrorMessage(errorMessage, hwnd, &vsFilename);
+			MessageBox(hwnd, (LPCSTR)errorMessage->GetBufferPointer(), (LPCSTR)L"Error", MB_OK);
+			exit(0);
 		}
 		// If there was nothing in the error message then it simply could not find the shader file itself.
 		else
@@ -106,6 +108,8 @@ bool TextureShader::InitializeShader(ID3D11Device* device, HWND hwnd, LPCSTR vsF
 		if (errorMessage)
 		{
 			//OutputShaderErrorMessage(errorMessage, hwnd, psFilename);
+			MessageBox(hwnd, (LPCSTR)errorMessage->GetBufferPointer(), (LPCSTR)L"Error", MB_OK);
+			exit(0);
 		}
 		else
 		{
@@ -146,13 +150,15 @@ bool TextureShader::InitializeShader(ID3D11Device* device, HWND hwnd, LPCSTR vsF
 	polygonLayout[1].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
 	polygonLayout[1].InstanceDataStepRate = 0;
 
-	polygonLayout[2].SemanticName = "TEXCOORD";
-	polygonLayout[2].SemanticIndex = 1;
-	polygonLayout[2].Format = DXGI_FORMAT_R32G32B32_FLOAT;
-	polygonLayout[2].InputSlot = 1;
-	polygonLayout[2].AlignedByteOffset = 0;
-	polygonLayout[2].InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA;
-	polygonLayout[2].InstanceDataStepRate = 1;
+	polygonLayout[2].SemanticName = "BONEIDS";
+	polygonLayout[2].SemanticIndex = 0;
+	polygonLayout[2].Format = DXGI_FORMAT_R32G32_FLOAT;
+	polygonLayout[2].InputSlot = 0;
+	polygonLayout[2].AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT;
+	polygonLayout[2].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+	polygonLayout[2].InstanceDataStepRate = 0;
+
+	
 
 	numElements = sizeof(polygonLayout) / sizeof(polygonLayout[0]);
 
@@ -296,7 +302,7 @@ bool TextureShader::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3DX
 }
 
 
-void TextureShader::RenderShader(ID3D11DeviceContext* deviceContext,int vertexCount, int instanceCount)
+void TextureShader::RenderShader(ID3D11DeviceContext* deviceContext,int vertexCount)
 {
 	deviceContext->IASetInputLayout(layout);
 
@@ -306,6 +312,6 @@ void TextureShader::RenderShader(ID3D11DeviceContext* deviceContext,int vertexCo
 	deviceContext->PSSetSamplers(0, 1, &sampleState);
 
 	// Render the object
-	deviceContext->DrawInstanced(vertexCount,instanceCount, 0, 0);
+	deviceContext->DrawIndexed(vertexCount, 0, 0);
 
 }

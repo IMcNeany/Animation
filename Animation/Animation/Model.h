@@ -4,17 +4,18 @@
 #include <iostream>
 #include "Mesh.h"
 #include <string>
-
+#include <list>
+#include "GameObject.h"
 using namespace std;
 
-class Model
+class Model: public GameObject
 {
 public:
 	Model();
 	~Model();
-	void Initialize(std::string filePath, ID3D11Device* device, std::string textureFilename, HWND, ID3D11DeviceContext*);
-	void Render(ID3D11DeviceContext*, D3DXMATRIX);
-	void SetTexture(ID3D11Device* device, std::string textureFilename);
+	void Initialize(std::string filePath, ID3D11Device* device, LPCSTR textureFilename, HWND, ID3D11DeviceContext*);
+	void Render(ID3D11DeviceContext*, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix);
+	void SetTexture(ID3D11Device* device, LPCSTR textureFilename);
 
 	D3DXVECTOR3 GetPosition() { return position; };
 	D3DXVECTOR3  GetRotation() { return rotation; };
@@ -24,6 +25,9 @@ public:
 	void AdjustRotation(D3DXVECTOR3);
 	void SetLookAtPos(D3DXVECTOR3 lookAtPos);
 	void SetWorldMatrix(D3DXMATRIX);
+	int GetIndexCount();
+	void SetIndexCount(int);
+	ID3D11ShaderResourceView* GetTexture();
 	D3DXVECTOR3  GetForwardVector() {return vec_forward;};
 	D3DXVECTOR3  GetRightVector() { return vec_right; };
 	D3DXVECTOR3  GetBackwardVector() { return vec_backward; };
@@ -60,6 +64,8 @@ private:
 	Texture* texture;
 
 	D3DXMATRIX* worldMatrix;
+	int indexCount;
+	int vertexCount;
 	
 	D3DXVECTOR3 posVector;
 	D3DXVECTOR3 rotVector;

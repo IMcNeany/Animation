@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{E0834A32-BA08-4E41-9874-DAFFE8717950}</ProjectGuid>
     <RootNamespace>Animation</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,8 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ExecutablePath>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86;E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Assimp\bin\x86;E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK %28June 2010%29\Utilities\bin\x86;C:\Program Files (x86)\Windows Kits\8.0\bin\x86;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin;C:\Program Files (x86)\HTML Help Workshop;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\ide;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\tools;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools;$(ExecutablePath);C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\</ExecutablePath>
-    <IncludePath>E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Assimp\include\assimp;E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Assimp\lib\x86;E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\User\Documents\Games Tech Year3\Advanced Tech\Animation\Animation\Assimp\include\assimp;C:\Users\User\Documents\Games Tech Year3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK (June 2010)\Include;E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Assimp\include\assimp;E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\User\Documents\Games Tech Year3\Advanced Tech\Animation\Animation\Assimp\lib\x86;C:\Users\User\Documents\Games Tech Year3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK %28June 2010%29\Lib\x86;C:\Users\User\Documents\Games Tech Year3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK %28June 2010%29\Utilities\bin\x86;E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Assimp\lib\x86;E:\Isobel\Documents\Games Tech Year 3\Advanced Tech\Animation\Animation\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,7 +134,6 @@
     <ClInclude Include="System.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureShader.h" />
-    <ClInclude Include="Vertex.h" />
     <ClInclude Include="VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>

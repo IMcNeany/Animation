@@ -9,7 +9,8 @@ struct VertexType
 {
 	float4 position: POSITION;
 	float2 tex: TEXCOORD0;
-	float3 instancePosition: TEXCOORD1;
+	float2 boneIDS : BONEIDS;
+
 };
 
 struct PixelType
@@ -24,10 +25,6 @@ PixelType VertexTextureShader(VertexType input)
 	PixelType output;
 
 	input.position.w = 1.0f;
-
-	input.position.x += input.instancePosition.x;
-    input.position.y += input.instancePosition.y;
-    input.position.z += input.instancePosition.z;
 
 	output.position = mul(input.position, worldMatrix);
 	output.position = mul(output.position, viewMatrix);

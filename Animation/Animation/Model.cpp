@@ -8,11 +8,12 @@ Model::~Model()
 {
 }
 
-void Model::Initialize(std::string filePath, ID3D11Device * idevice, std::string  textureFilename, HWND, ID3D11DeviceContext* _deviceContext)
+void Model::Initialize(std::string filePath, ID3D11Device * idevice, LPCSTR  textureFilename, HWND _hwnd, ID3D11DeviceContext* _deviceContext)
 {
+	
 	device = idevice;
 	deviceContext = _deviceContext;
-	texture = texture;
+	SetTexture(idevice, textureFilename);
 	//cb_vs_vertexshader = &cb_vs;
 
 	if (!LoadModel(filePath))
@@ -20,6 +21,7 @@ void Model::Initialize(std::string filePath, ID3D11Device * idevice, std::string
 		//return false;
 		//error
 		OutputDebugStringW(L"nope");
+		
 	}
 	SetPosition(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	SetRotation(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
@@ -27,7 +29,9 @@ void Model::Initialize(std::string filePath, ID3D11Device * idevice, std::string
 
 }
 
-void Model::SetTexture(ID3D11Device* device , std::string textureFilename)
+
+
+void Model::SetTexture(ID3D11Device* device , LPCSTR textureFilename)
 {
 	texture = new Texture;
 
@@ -37,25 +41,37 @@ void Model::SetTexture(ID3D11Device* device , std::string textureFilename)
 	{
 		
 	}
-	//texture->GetTexture();
+	texture->GetTexture();
 }
 
-void Model::Render(ID3D11DeviceContext*, D3DXMATRIX viewProjectionMatrix)
+ID3D11ShaderResourceView* Model::GetTexture()
+{
+	return texture->GetTexture();
+}
+
+void Model::Render(ID3D11DeviceContext*, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix)
 {
 	//Update Constant buffer with WVP Matrix
-	//D3DXMATRIX worldViewProjection;
-	//D3DXMatrixMultiply(&worldViewProjection, worldMatrix, &viewProjectionMatrix);
+	D3DXMATRIX worldView;
+	D3DXMatrixMultiply(&worldView, &worldMatrix, &viewMatrix);
+	D3DXMATRIX worldViewProj;
+	D3DXMatrixMultiply(&worldViewProj, &projectionMatrix, &worldView);
+	D3DXMatrixTranspose(&worldViewProj, &worldViewProj);
+	//need to do something to shader..
 	//cb_vs_vertexshader->data.mat = worldViewProjection; //viewProjectionMatrix; //Calculate World-View-Projection Matrix
 	//D3DXMatrixTranspose(&cb_vs_vertexshader->data.mat, &cb_vs_vertexshader->data.mat); //XMMatrixTranspose(cb_vs_vertexshader->data.mat);
 	//cb_vs_vertexshader->ApplyChanges();
 	//deviceContext->VSSetConstantBuffers(0, 1, cb_vs_vertexshader->GetAddressOf());
-
+	
+	GameObject::Render(deviceContext, projectionMatrix, viewMatrix, worldMatrix);
 	//deviceContext->PSSetShaderResources(0, 1, &texture); //Set Texture
-	RenderBuffers(deviceContext);
+	
 	for (int i = 0; i < meshes.size(); i++)
 	{
-		meshes[i].Render();
+		meshes[i].Render(); 
 	}
+	//RenderBuffers(deviceContext);
+
 }
 
 bool Model::LoadModel(const std::string & filePath)
@@ -70,6 +86,7 @@ bool Model::LoadModel(const std::string & filePath)
 		return false;
 
 	ProcessNode(pScene->mRootNode, pScene);
+	
 	return true;
 }
 
@@ -79,6 +96,7 @@ void Model::ProcessNode(aiNode * node, const aiScene * scene)
 	{
 		aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
 		meshes.push_back(ProcessMesh(mesh, scene));
+		meshes[i].LoadBones(i, mesh);
 	}
 
 	for (UINT i = 0; i < node->mNumChildren; i++)
@@ -106,6 +124,18 @@ Mesh Model::ProcessMesh(aiMesh * mesh, const aiScene * scene)
 			vertex.texCoord.x = (float)mesh->mTextureCoords[0][i].x;
 			vertex.texCoord.y = (float)mesh->mTextureCoords[0][i].y;
 		}
+		
+		//std::list<Mesh::VertexBoneData> boneData;
+		
+		for (int k = 0; k < meshes.size(); k++) {
+
+		//	boneData = meshes[k].GetList();
+			for (int j = 0; j < meshes[k].GetListSize(); j++)
+			{
+				vertex.boneID = (meshes[k].GetVertexInfo(j));
+			}
+			
+		}
 
 		vertices.push_back(vertex);
 	}
@@ -118,6 +148,7 @@ Mesh Model::ProcessMesh(aiMesh * mesh, const aiScene * scene)
 		for (UINT j = 0; j < face.mNumIndices; j++)
 			indices.push_back(face.mIndices[j]);
 	}
+	SetIndexCount(indices.size());
 
 	return Mesh(device, deviceContext, vertices, indices);
 }
@@ -125,11 +156,9 @@ Mesh Model::ProcessMesh(aiMesh * mesh, const aiScene * scene)
 void Model::RenderBuffers(ID3D11DeviceContext* device)
 {
 
-	unsigned int strides[2];
+/*	unsigned int strides[2];
 	unsigned int offsets[2];
 	ID3D11Buffer* bufferPointers[2];
-
-
 
 	strides[0] = sizeof(VertexType);
 	strides[1] = sizeof(InstanceType);
@@ -148,7 +177,7 @@ void Model::RenderBuffers(ID3D11DeviceContext* device)
 	device->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
 
 	// Set the type of primitive that should be rendered from this vertex buffer, in this case triangles.
-	device->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	device->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);*/
 }
 
 void Model::UpdateWorldMatrix()
@@ -164,6 +193,15 @@ void Model::UpdateWorldMatrix()
 	D3DXVec3TransformCoord(&vec_left, &DEFAULT_LEFT_VECTOR, &rotationMatrix);
 	D3DXVec3TransformCoord(&vec_right, &DEFAULT_RIGHT_VECTOR, &rotationMatrix);
 
+}
+int Model::GetIndexCount()
+{
+	return indexCount;
+}
+
+void Model::SetIndexCount(int count)
+{
+	 indexCount = count;
 }
 
 void Model::SetPosition(D3DXVECTOR3 pos)

@@ -53,19 +53,7 @@ Game::Game(ID3D11Device* _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance, D3DXMATR
 	{
 		//error
 	}*/
-	textureShader = new TextureShader;
-	if (!textureShader)
-	{
-		//return false;
-	}
-
-	// Initialize the texture shader object.
-	bool result = textureShader->Initialize(_pd3dDevice, _hWnd);
-	if (!result)
-	{
-		//MessageBox(hwnd, L"Could not initialize the texture shader object.", L"Error", MB_OK);
-		//return false;
-	}
+	
 
 	//set current frame time as otherwise won't be initilised for player
 	DWORD currentTime = GetTickCount();
@@ -83,12 +71,14 @@ Game::Game(ID3D11Device* _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance, D3DXMATR
 	camera = new Camera;
 	//camera->SetPosition(10.0f, 10.0f, 10.0f);
 	//camera->SetOffset(10.0f, 30.0f, -10.0f);
-	camera->SetOffset(0.0f, 3.0f, -5.0f);
+	camera->SetOffset(0.0f,110.0f, -95.0f);
 
 	model = new Model();
 	model->SetWorldMatrix(worldMatrix);
-	model->Initialize("Data\\Norman.obj", _pd3dDevice, NULL, _hWnd, context);
-	model->SetTexture(_pd3dDevice,"Data/Dots.dds" );
+	model->Initialize("../Animation/Data/dwarf.x", _pd3dDevice, "Data/dwarfTex.dds", _hWnd, context);
+	model->SetPos(D3DXVECTOR3(5, 0, 0));
+	gameObjects.push_back(model);
+	//model->SetTexture(_pd3dDevice,"Data/Dots.dds" );
 
 	/*grassBlades = new Grass();
 	grassBlades->Initialize(_pd3dDevice, L"../Animation/data/grass.dds", _hWnd);
@@ -103,8 +93,8 @@ Game::Game(ID3D11Device* _pd3dDevice, HWND _hWnd, HINSTANCE _hInstance, D3DXMATR
 
 
 
-	//textureShader = new TextureShader;
-	//textureShader->Initialize(_pd3dDevice, _hWnd);
+	textureShader = new TextureShader;
+	textureShader->Initialize(_pd3dDevice, _hWnd);
 
 	startTime = GetTickCount();
 
@@ -205,7 +195,7 @@ bool Game::Tick(ID3D11DeviceContext* _pd3dImmediateContext, D3DXMATRIX projectio
 	camera->SetFrameTime((float)gameData->frameTick);
 	//player->SetFrameTime((float)gameData->frameTick);
 	CheckKeyPressed();
-	model->Render(_pd3dImmediateContext, (projectionMatrix * viewMatrix));
+	//model->Render(_pd3dImmediateContext, (projectionMatrix * viewMatrix));
 	//need to change for all objects
 	for (list<GameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
 	{
@@ -235,8 +225,8 @@ void Game::Draw(ID3D11DeviceContext* _pd3dImmediateContext, D3DXMATRIX projectio
 	for (list<GameObject*>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
 	{
 		(*it)->Render(_pd3dImmediateContext, worldMatrix, viewMatrix, projectionMatrix);
-	//	textureShader->Render(_pd3dImmediateContext, (*it)->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
-		//	(*it)->GetTexture());
+		textureShader->Render(_pd3dImmediateContext, (*it)->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
+			(*it)->GetTexture());
 	}
 
 
